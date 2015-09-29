@@ -27,7 +27,7 @@ class Field(object):
     def __init__(self, attribute=None, column_name=None, widget=None,
             readonly=False):
         self.attribute = attribute
-        self.column_name = unicode(column_name)
+        self.column_name = column_name
         if not widget:
             widget = widgets.Widget()
         self.widget = widget
@@ -50,8 +50,8 @@ class Field(object):
         """
         try:
             value = data[self.column_name]
-        except KeyError:
-            raise KeyError("Column {} not found in dataset. Available "
+        except KeyError, e:
+            raise KeyError("Column '{}' not found in dataset. Available "
                            "columns are: {}".format(self.column_name, list(data.keys())))
 
         try:
