@@ -27,7 +27,7 @@ class Field(object):
     def __init__(self, attribute=None, column_name=None, widget=None,
             readonly=False):
         self.attribute = attribute
-        self.column_name = column_name
+        self.column_name = unicode(column_name)
         if not widget:
             widget = widgets.Widget()
         self.widget = widget
